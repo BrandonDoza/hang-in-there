@@ -116,6 +116,11 @@ showRandomPosterButton.addEventListener("click", function(event) {
   loadPoster(randomPoster)
 });
 
+document.querySelector(".show-form").addEventListener("click", showForm)
+document.querySelector(".show-main").addEventListener("click", showMain)
+document.querySelector(".show-saved").addEventListener("click", viewSaved)
+document.querySelector(".back-to-main").addEventListener("click", viewSaved)
+
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -146,4 +151,19 @@ function getRandomPoster() {
   currentPoster = newPoster
   // console.log('current poster',currentPoster)
   return currentPoster
+}
+
+function showForm(){
+  document.querySelector('.poster-form').classList.toggle("hidden")
+  document.querySelector(".main-poster").classList.toggle("hidden")
+}
+
+function showMain(){
+  document.querySelector('.poster-form').classList.toggle("hidden")
+  document.querySelector(".main-poster").classList.toggle("hidden")
+}
+
+function viewSaved(){
+  document.querySelector('.saved-posters').classList.toggle("hidden")
+  document.querySelector(".main-poster").classList.toggle("hidden")
 }
