@@ -7,6 +7,7 @@ var showRandomPosterButton = document.querySelector('.show-random')
 var posterImageInput = document.querySelector("#poster-image-url")
 var posterTitleInput = document.querySelector("#poster-title")
 var posterQuoteInput = document.querySelector("#poster-quote")
+var savedPosterGrid = document.querySelector('.saved-posters-grid')
 
 // var frontPagePoster = document.querySelectory(".main-poster")
 // we've provided you with some data to work with 👇
@@ -128,7 +129,7 @@ document.querySelector(".show-main").addEventListener("click", showMain)
 document.querySelector(".show-saved").addEventListener("click", viewSaved)
 document.querySelector(".back-to-main").addEventListener("click", viewSaved)
 document.querySelector(".make-poster").addEventListener("click", makeMyPoster)
-document.querySelector("save-poster").addEventListener("click", saveThisPoster)
+document.querySelector(".save-poster").addEventListener("click", saveThisPoster)
 
 
 
@@ -158,11 +159,10 @@ function createPoster(imageUrl, title, quote) {
   }
 }
   
+
+
 function makeMyPoster(){
   event.preventDefault();
-
-
-
 image.setAttribute('src', posterImageInput.value)
 title.innerText = posterTitleInput.value;
 quote.innerText = posterQuoteInput.value
@@ -170,8 +170,10 @@ quote.innerText = posterQuoteInput.value
 images.push(posterImageInput.value);
 titles.push(posterTitleInput.value);
 quotes.push(posterQuoteInput.value);
-
+var userPoster = createPoster(posterImageInput.value, posterTitleInput.value, posterQuoteInput.value)
 showMain()
+currentPoster = userPoster
+return currentPoster
 }
   
 
@@ -180,14 +182,27 @@ function getRandomPoster() {
   var randomTitleIndex = getRandomIndex(titles)
   var randomQuoteIndex = getRandomIndex(quotes)
   var newPoster = createPoster(images[randomImageIndex],titles[randomTitleIndex],quotes[randomQuoteIndex])
-  return newPoster
+  currentPoster = newPoster
+  title.innerText = newPoster.title
+  quote.innerText = newPoster.quote
+  image.setAttribute("src", newPoster.imageUrl)
+  return currentPoster
 }
-var savedPosterGrid = document.querySelector('.saved-posters-grid')
-var main
+
+// var savedPosterGrid = document.querySelector('.saved-posters-grid')
+
 
 function saveThisPoster() {
-  savedPosters.push(image.value, title.value, quote.value)
-  console.log(saveThisPoster)
+ if(!savedPosters.includes(currentPoster)) {
+  savedPosters.push(currentPoster)
+    // var savedPosterGrid = document.querySelector('.saved-posters-grid')
+      savedPosterGrid.insertAdjacentHTML('afterbegin',
+      `<div class="mini-poster">
+        <img src="${currentPoster.imageUrl}" alt="motivational poster">
+        <h2>${currentPoster.title}</h2>
+        <h4>${currentPoster.quote}</h4>
+        </div>`)
+    }
 }
 
 
@@ -219,5 +234,6 @@ function viewSaved(){
  // duplicate posters are not allowed. 
  // the posters in the saved posters array need to be tied to the saved posters
  // grid section of the html file. 
+ // we need to link the save this poster 
 
 
