@@ -7,6 +7,7 @@ var showRandomPosterButton = document.querySelector('.show-random')
 var posterImageInput = document.querySelector("#poster-image-url")
 var posterTitleInput = document.querySelector("#poster-title")
 var posterQuoteInput = document.querySelector("#poster-quote")
+
 // var frontPagePoster = document.querySelectory(".main-poster")
 // we've provided you with some data to work with 👇
 var images = [
@@ -127,6 +128,7 @@ document.querySelector(".show-main").addEventListener("click", showMain)
 document.querySelector(".show-saved").addEventListener("click", viewSaved)
 document.querySelector(".back-to-main").addEventListener("click", viewSaved)
 document.querySelector(".make-poster").addEventListener("click", makeMyPoster)
+document.querySelector("save-poster").addEventListener("click", saveThisPoster)
 
 
 
@@ -180,6 +182,15 @@ function getRandomPoster() {
   var newPoster = createPoster(images[randomImageIndex],titles[randomTitleIndex],quotes[randomQuoteIndex])
   return newPoster
 }
+var savedPosterGrid = document.querySelector('.saved-posters-grid')
+var main
+
+function saveThisPoster() {
+  savedPosters.push(image.value, title.value, quote.value)
+  console.log(saveThisPoster)
+}
+
+
 // Button Functions
 function showForm(){
   document.querySelector('.poster-form').classList.toggle("hidden")
@@ -196,7 +207,17 @@ function viewSaved(){
   document.querySelector(".main-poster").classList.toggle("hidden")
 }
 
-  
+ // we need to take user input from poster-image, poster-quote, and poster-title
+ // and put it in the saved posters array (object? or create 3 arrays?)
+ // Does this utilize the create poster function? 
+ // we need to connect the save this poster button to a function that pushes 
+ // the input to the saved posters array (function should invoke the create
+ // poster function?)
+ // we need to link the show saved posters button to the saved posters array
+ // we need to research how to take user input and push it to an array (should 
+ // it be an object we're pushing?) 
+ // duplicate posters are not allowed. 
+ // the posters in the saved posters array need to be tied to the saved posters
+ // grid section of the html file. 
 
 
-  
