@@ -4,6 +4,9 @@ var image = document.querySelector(".poster-img");
 var title = document.querySelector(".poster-title");
 var quote = document.querySelector(".poster-quote")
 var showRandomPosterButton = document.querySelector('.show-random')
+var posterImageInput = document.querySelector("#poster-image-url")
+var posterTitleInput = document.querySelector("#poster-title")
+var posterQuoteInput = document.querySelector("#poster-quote")
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -105,6 +108,7 @@ var quotes = [
 var savedPosters = [];
 var currentPoster;
 
+
 // event listeners go here 👇
 window.addEventListener("load", function(event) {
   var firstPoster = getRandomPoster();
@@ -120,6 +124,8 @@ document.querySelector(".show-form").addEventListener("click", showForm)
 document.querySelector(".show-main").addEventListener("click", showMain)
 document.querySelector(".show-saved").addEventListener("click", viewSaved)
 document.querySelector(".back-to-main").addEventListener("click", viewSaved)
+document.querySelector(".make-poster").addEventListener("click", makeMyPoster)
+
 
 
 // functions and event handlers go here 👇
@@ -127,6 +133,8 @@ document.querySelector(".back-to-main").addEventListener("click", viewSaved)
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+
+
 
 function loadPoster(poster) {
   image.src = poster.imageUrl
@@ -142,6 +150,36 @@ function createPoster(imageUrl, title, quote) {
     quote: quote
   }
 }
+
+// function newPosterObject(){
+//   currentPoster = createPoster(posterImageInput.value, posterTitleInput.value, posterQuoteInput.value)
+// }
+
+function makeMyPoster(event){
+  currentPoster = createPoster(posterImageInput.value, posterTitleInput.value, posterQuoteInput.value)
+  var currentImage = currentPoster.imageUrl
+  var currentTitle = currentPoster.title
+  var currentQuote = currentPoster.quote
+  poster.innerHTML = currentQuote
+  title.innerHTML = currentTitle
+  image.src = currentImage
+  event.preventDefault()
+  
+}
+
+// function pushToArrays(){
+//   images.push(currentPoster.imageUrl)
+//   titles.push(currentPoster.title)
+//   quotes.push(currentPoster.quote)
+// }
+
+// function handleAllEvents(event){
+//   newPosterObject()
+//   pushToArrays()
+//   event.preventDefault()
+//   makeMyPoster()
+
+// }
 
 function getRandomPoster() {
   var randomImageIndex = getRandomIndex(images)
@@ -168,4 +206,4 @@ function viewSaved(){
   document.querySelector(".main-poster").classList.toggle("hidden")
   }
 
-  hello there
+  
