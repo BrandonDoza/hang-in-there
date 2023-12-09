@@ -4,13 +4,10 @@ var image = document.querySelector(".poster-img");
 var title = document.querySelector(".poster-title");
 var quote = document.querySelector(".poster-quote")
 var showRandomPosterButton = document.querySelector('.show-random')
-<<<<<<< HEAD
 var posterImageInput = document.querySelector("#poster-image-url")
 var posterTitleInput = document.querySelector("#poster-title")
 var posterQuoteInput = document.querySelector("#poster-quote")
-=======
 // var frontPagePoster = document.querySelectory(".main-poster")
->>>>>>> beacf93f3c7147435b97ac0d50f6c820eb589602
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -110,14 +107,7 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = []
-
-
-var storedImage = imageTextBox.value;
-var storedTitle = titleTextBox.value;
-var storedQuote = quoteTextBox.value;
-title.innerHTML = storedTitle;
-quote.innerHTML = storedQuote;
-poster.src = storedImage
+var currentPoster
 
 
 
@@ -136,13 +126,10 @@ document.querySelector(".show-form").addEventListener("click", showForm)
 document.querySelector(".show-main").addEventListener("click", showMain)
 document.querySelector(".show-saved").addEventListener("click", viewSaved)
 document.querySelector(".back-to-main").addEventListener("click", viewSaved)
-<<<<<<< HEAD
 document.querySelector(".make-poster").addEventListener("click", makeMyPoster)
-=======
-// document.querySelector(".make-poster").addEventListener("click" ,createNewPoster)
 
 
->>>>>>> beacf93f3c7147435b97ac0d50f6c820eb589602
+
 
 
 
@@ -168,36 +155,23 @@ function createPoster(imageUrl, title, quote) {
     quote: quote
   }
 }
-
-// function newPosterObject(){
-//   currentPoster = createPoster(posterImageInput.value, posterTitleInput.value, posterQuoteInput.value)
-// }
-
-function makeMyPoster(event){
-  currentPoster = createPoster(posterImageInput.value, posterTitleInput.value, posterQuoteInput.value)
-  var currentImage = currentPoster.imageUrl
-  var currentTitle = currentPoster.title
-  var currentQuote = currentPoster.quote
-  poster.innerHTML = currentQuote
-  title.innerHTML = currentTitle
-  image.src = currentImage
-  event.preventDefault()
   
+function makeMyPoster(){
+  event.preventDefault();
+
+
+
+image.setAttribute('src', posterImageInput.value)
+title.innerText = posterTitleInput.value;
+quote.innerText = posterQuoteInput.value
+
+images.push(posterImageInput.value);
+titles.push(posterTitleInput.value);
+quotes.push(posterQuoteInput.value);
+
+showMain()
 }
-
-// function pushToArrays(){
-//   images.push(currentPoster.imageUrl)
-//   titles.push(currentPoster.title)
-//   quotes.push(currentPoster.quote)
-// }
-
-// function handleAllEvents(event){
-//   newPosterObject()
-//   pushToArrays()
-//   event.preventDefault()
-//   makeMyPoster()
-
-// }
+  
 
 function getRandomPoster() {
   var randomImageIndex = getRandomIndex(images)
@@ -206,7 +180,7 @@ function getRandomPoster() {
   var newPoster = createPoster(images[randomImageIndex],titles[randomTitleIndex],quotes[randomQuoteIndex])
   return newPoster
 }
-
+// Button Functions
 function showForm(){
   document.querySelector('.poster-form').classList.toggle("hidden")
   document.querySelector(".main-poster").classList.toggle("hidden")
@@ -222,40 +196,7 @@ function viewSaved(){
   document.querySelector(".main-poster").classList.toggle("hidden")
 }
 
-<<<<<<< HEAD
   
-=======
-// var motivationalTitle = document.querySelector(".poster-title")
 
-function createNewPoster(event2){
-  var userPoster = createPoster(storedImage, storedTitle, storedQuote);
-  // hidden.classList.add("hidden");
-  // frontPagePoster.className = "poster-main";
-  document.querySelector(".main-poster").classList.toggle("hidden")
-  poster.src = imageTextBox.value;
-  title.innerHTML = titleTextBox.value;
-  quote.innerHTML = quoteTextBox.value;
-  images.push(storedImage);
-  titles.push(storedTitle);
-  quotes.push(storedQuote);
-  event2.preventDefault();
-  return userPoster
-}
 
-// var storeImage = imageTextBox.value;
-// var storeTitle = titleTextBox.value;
-// var storeQuote = quoteTextbox.value;
-// title.innerHTML = storeTitle;
-// quote.innerHTML = storeQuote;
-// poster.src = storeImage
-
-  // users need to be able to input data into 3 fields on the
-  // make your own poster page
-  // done - we need to activate the make your own poster button to 
-  // view the new poster form 
-  // based on the data that users input we need to save it into 
-  // the respective arrays
-  // we need to be able to go back to the main poster view
-  // the new poster created by the user needs to be able to be
-  // displayed on the main view
->>>>>>> beacf93f3c7147435b97ac0d50f6c820eb589602
+  
