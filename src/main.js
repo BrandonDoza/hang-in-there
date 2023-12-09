@@ -4,6 +4,7 @@ var image = document.querySelector(".poster-img");
 var title = document.querySelector(".poster-title");
 var quote = document.querySelector(".poster-quote")
 var showRandomPosterButton = document.querySelector('.show-random')
+var frontPagePoster = document.querySelectory(".main-poster")
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -102,8 +103,16 @@ var quotes = [
   "Each person must live their life as a model for others.",
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-var savedPosters = [];
-var currentPoster;
+var savedPosters = []
+
+
+var storedImage = imageTextBox.value;
+var storedTitle = titleTextBox.value;
+var storedQuote = quoteTextBox.value;
+title.innerHTML = storedTitle;
+quote.innerHTML = storedQuote;
+poster.src = storedImage
+
 
 // event listeners go here 👇
 window.addEventListener("load", function(event) {
@@ -120,6 +129,10 @@ document.querySelector(".show-form").addEventListener("click", showForm)
 document.querySelector(".show-main").addEventListener("click", showMain)
 document.querySelector(".show-saved").addEventListener("click", viewSaved)
 document.querySelector(".back-to-main").addEventListener("click", viewSaved)
+// document.querySelector(".make-poster").addEventListener("click" ,createNewPoster)
+
+
+
 
 
 // functions and event handlers go here 👇
@@ -148,9 +161,7 @@ function getRandomPoster() {
   var randomTitleIndex = getRandomIndex(titles)
   var randomQuoteIndex = getRandomIndex(quotes)
   var newPoster = createPoster(images[randomImageIndex],titles[randomTitleIndex],quotes[randomQuoteIndex])
-  currentPoster = newPoster
-  // console.log('current poster',currentPoster)
-  return currentPoster
+  return newPoster
 }
 
 function showForm(){
@@ -166,6 +177,36 @@ function showMain(){
 function viewSaved(){
   document.querySelector('.saved-posters').classList.toggle("hidden")
   document.querySelector(".main-poster").classList.toggle("hidden")
-  }
+}
 
-  hello there
+// var motivationalTitle = document.querySelector(".poster-title")
+
+function createNewPoster(event2){
+  var userPoster = createPoster(storeImage, storeTitle, storeQuote);
+  hidden.classlist.add("hidden");
+  frontPagePoster.className = "poster-main";
+  poster.src = imageTextBox.value;
+  storedTitle.innerHTML = titleTextBox.value;
+  quote.innerHTML = quoteTextBox.value;
+  images.push(storedImage);
+  titles.push(storedTitle);
+  quotes.push(storedQuote);
+  event2.preventDefault();
+}
+
+// var storeImage = imageTextBox.value;
+// var storeTitle = titleTextBox.value;
+// var storeQuote = quoteTextbox.value;
+// title.innerHTML = storeTitle;
+// quote.innerHTML = storeQuote;
+// poster.src = storeImage
+
+  // users need to be able to input data into 3 fields on the
+  // make your own poster page
+  // done - we need to activate the make your own poster button to 
+  // view the new poster form 
+  // based on the data that users input we need to save it into 
+  // the respective arrays
+  // we need to be able to go back to the main poster view
+  // the new poster created by the user needs to be able to be
+  // displayed on the main view
