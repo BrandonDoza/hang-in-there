@@ -4,7 +4,7 @@ var image = document.querySelector(".poster-img");
 var title = document.querySelector(".poster-title");
 var quote = document.querySelector(".poster-quote")
 var showRandomPosterButton = document.querySelector('.show-random')
-var frontPagePoster = document.querySelectory(".main-poster")
+// var frontPagePoster = document.querySelectory(".main-poster")
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -182,16 +182,18 @@ function viewSaved(){
 // var motivationalTitle = document.querySelector(".poster-title")
 
 function createNewPoster(event2){
-  var userPoster = createPoster(storeImage, storeTitle, storeQuote);
-  hidden.classlist.add("hidden");
-  frontPagePoster.className = "poster-main";
+  var userPoster = createPoster(storedImage, storedTitle, storedQuote);
+  // hidden.classList.add("hidden");
+  // frontPagePoster.className = "poster-main";
+  document.querySelector(".main-poster").classList.toggle("hidden")
   poster.src = imageTextBox.value;
-  storedTitle.innerHTML = titleTextBox.value;
+  title.innerHTML = titleTextBox.value;
   quote.innerHTML = quoteTextBox.value;
   images.push(storedImage);
   titles.push(storedTitle);
   quotes.push(storedQuote);
   event2.preventDefault();
+  return userPoster
 }
 
 // var storeImage = imageTextBox.value;
