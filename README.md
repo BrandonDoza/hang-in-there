@@ -12,7 +12,7 @@ They need to visit our github, choose to fork the repository, and then clone it 
 
 ### Preview of App:
 [//]: <> (Provide ONE gif or screenshot of your application - choose the "coolest" piece of functionality to show off.)
-![Alt text](<Screenshot 2023-12-10 at 12.00.05 PM.png>)
+![Alt text](<Screenshot 2023-12-10 at 12.00.05 PM Small.jpeg>)
 The coolest part is the ability for a user to create their own motivational poster.
 ### Context:
 [//]: <> (Give some context for the project here. How long did you have to work on it? How far into the Turing program are you?)
